@@ -1,78 +1,120 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <!--<html xmlns="http://www.w3.org/1999/xhtml">-->
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>可做跳转提示或404的蓝天白云主题动画模板</title>
-        <link th:href="@{/404/css/public.css}" rel="stylesheet" type="text/css" />
-        <link th:href="@{/404/css/index.css}" rel="stylesheet" type="text/css" />
-        <link th:href="@{/404/css/404.css}" rel="stylesheet" type="text/css" />
-        <script th:src="@{/js/jquery-1.7.2.min.js}"></script>
-        <script type="text/javascript">
-            $(function() {
-                var h = $(window).height();
-                $('body').height(h);
-                $('.mianBox').height(h);
-                centerWindow(".tipInfo");
-            });
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>登录</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <link th:href="@{/404/css/public.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/404/css/index.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/404/css/404.css}" rel="stylesheet" type="text/css"/>
+    <script th:src="@{/js/jquery-1.7.2.min.js}"></script>
 
-            //2.将盒子方法放入这个方，方便法统一调用
-            function centerWindow(a) {
-                center(a);
-                //自适应窗口
-                $(window).bind('scroll resize',
-                        function() {
-                            center(a);
-                        });
-            }
 
-            //1.居中方法，传入需要剧中的标签
-            function center(a) {
-                var wWidth = $(window).width();
-                var wHeight = $(window).height();
-                var boxWidth = $(a).width();
-                var boxHeight = $(a).height();
-                var scrollTop = $(window).scrollTop();
-                var scrollLeft = $(window).scrollLeft();
-                var top = scrollTop + (wHeight - boxHeight) / 2;
-                var left = scrollLeft + (wWidth - boxWidth) / 2;
-                $(a).css({
-                    "top": top,
-                    "left": left
+    <script type="text/javascript">
+        $(function () {
+            var h = $(window).height();
+            $('body').height(h);
+            $('.mianBox').height(h);
+            centerWindow(".tipInfo");
+        });
+
+        //2.将盒子方法放入这个方，方便法统一调用
+        function centerWindow(a) {
+            center(a);
+            //自适应窗口
+            $(window).bind('scroll resize',
+                function () {
+                    center(a);
                 });
-            }
-        </script>
-    </head>
-    <body>
-        <div class="mianBox">
-            <img th:src="@{/404/images/yun0.png}" alt="" class="yun yun0" />
-            <img th:src="@{/404/images/yun1.png}" alt="" class="yun yun1" />
-            <img th:src="@{/404/images/yun2.png}" alt="" class="yun yun2" />
-            <img th:src="@{/404/images/bird.png}" alt="" class="bird" />
-            <img th:src="@{/404/images/san.png}" alt="" class="san" />
-            <div class="tipInfo">
-                <div class="in">
-                    <div class="textThis">
-                        <h2>登录</h2>
-                        <!--<p><span>页面自动<a id="href" href="http://www.mycodes.net/">跳转</a></span><span>等待<b id="wait">3</b>秒</span></p>-->
-                        <form action="">
+        }
 
-                        </form>
-                        <script type="text/javascript">                            (function() {
-                                var wait = document.getElementById('wait'), href = document.getElementById('href').href;
-                                var interval = setInterval(function() {
-                                    var time = --wait.innerHTML;
-                                    if (time <= 0) {
-                                        location.href = href;
-                                        clearInterval(interval);
-                                    }
-                                    ;
-                                }, 1000);
-                            })();
-                        </script>
+        //1.居中方法，传入需要剧中的标签
+        function center(a) {
+            var wWidth = $(window).width();
+            var wHeight = $(window).height();
+            var boxWidth = $(a).width();
+            var boxHeight = $(a).height();
+            var scrollTop = $(window).scrollTop();
+            var scrollLeft = $(window).scrollLeft();
+            var top = scrollTop + (wHeight - boxHeight) / 2;
+            var left = scrollLeft + (wWidth - boxWidth) / 2;
+            $(a).css({
+                "top": top,
+                "left": left
+            });
+        }
+    </script>
+</head>
+<body>
+<div class="mianBox">
+    <img th:src="@{/404/images/yun0.png}" alt="" class="yun yun0"/>
+    <img th:src="@{/404/images/yun1.png}" alt="" class="yun yun1"/>
+    <img th:src="@{/404/images/yun2.png}" alt="" class="yun yun2"/>
+    <img th:src="@{/404/images/bird.png}" alt="" class="bird"/>
+    <img th:src="@{/404/images/san.png}" alt="" class="san"/>
+    <div class="tipInfo">
+        <div class="in">
+            <div class="textThis">
+                <h2>登录</h2>
+                <!--<p><span>页面自动<a id="href" href="http://www.mycodes.net/">跳转</a></span><span>等待<b id="wait">3</b>秒</span></p>-->
+
+                <form class="layui-form" action="" style="width: 330px;padding-bottom: 20px;padding-top: 5px">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="title" required lay-verify="required" placeholder="请输入用户名"
+                                   autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即登录</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <script type="text/javascript">                            (function () {
+                    var wait = document.getElementById('wait'), href = document.getElementById('href').href;
+                    var interval = setInterval(function () {
+                        var time = --wait.innerHTML;
+                        if (time <= 0) {
+                            location.href = href;
+                            clearInterval(interval);
+                        }
+                        ;
+                    }, 1000);
+                })();
+                </script>
             </div>
         </div>
-    </body>
+    </div>
+</div>
+
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+</script>
+</body>
+
 </html>
