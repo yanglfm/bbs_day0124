@@ -10,6 +10,7 @@ public class BbsDay0124Application {
 
     public static void main(String[] args) {
         SpringApplication.run(BbsDay0124Application.class, args);
+        System.out.println("123GO");
     }
 
 }

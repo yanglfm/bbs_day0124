@@ -64,7 +64,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入用户名"
+                            <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名"
                                    autocomplete="off" class="layui-input">
                         </div>
                     </div>
@@ -105,12 +105,21 @@
 <script th:src="@{/layui/layui.js}"></script>
 <script>
     //Demo
-    layui.use('form', function () {
-        var form = layui.form;
+    layui.use(['form', 'jquery', 'layer'], function () {
+        var form = layui.form, $ = layui.$, layer = layui.layer;
 
         //监听提交
         form.on('submit(formDemo)', function (data) {
-            layer.msg(JSON.stringify(data.field));
+            // layer.msg(JSON.stringify(data.field));
+            $.post("/admin/login", data.field, function (res) {
+                if (res.code === 30005) {
+                    layer.msg(res.msg);
+                    location.href = "/admin";
+                } else {
+                    layer.msg(res.msg, {time: 2000, icon: 2});
+                }
+
+            });
             return false;
         });
     });

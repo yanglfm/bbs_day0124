@@ -56,7 +56,11 @@
             <version>1.18.4</version>
             <!--<scope>provided</scope>-->
         </dependency>
-
+        <dependency>
+            <groupId>com.github.17640410053</groupId>
+            <artifactId>bilibili-jz-core</artifactId>
+            <version>1.0.2.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>

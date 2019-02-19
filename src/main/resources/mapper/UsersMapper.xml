@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tom.bbs_day0124.mapper.UsersMapper">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.tom.bbs_day0124.model.Users">
+        <result column="user_id" property="user_id"/>
+        <result column="user_name" property="user_name"/>
+        <result column="user_pass" property="user_pass"/>
+        <result column="user_image" property="user_image"/>
+        <result column="user_mail" property="user_mail"/>
+        <result column="user_phone" property="user_phone"/>
+        <result column="user_status" property="user_status"/>
+        <result column="user_token" property="user_token"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `user_id`,
+        `user_name`,
+        `user_pass`,
+        `user_image`,
+        `user_mail`,
+        `user_phone`,
+        `user_status`,
+        `user_token`
+    </sql>
+
+    <select id="findOne" resultType="Users">
+        select * from cake_day1225.users where username=#{username} and password=#{password}
+    </select>
+
+
+    <select id="findAll" parameterType="map" resultType="Users">
+        select * from cake_day1225.users limit #{start},#{limit}
+    </select>
+
+    <select id="countAllUsers" resultType="java.lang.Long">
+        select count(*) as countNum from cake_day1225.users
+    </select>
+
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.user_id">
+        INSERT INTO users (
+            `user_id`,
+            `user_name`,
+            `user_pass`,
+            `user_image`,
+            `user_mail`,
+            `user_phone`,
+            `user_status`,
+            `user_token`
+        ) VALUES (
+            #{pojo.user_id},
+            #{pojo.user_name},
+            #{pojo.user_pass},
+            #{pojo.user_image},
+            #{pojo.user_mail},
+            #{pojo.user_phone},
+            #{pojo.user_status},
+            #{pojo.user_token}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.user_id">
+        INSERT INTO users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.user_id!=null">`user_id`,</if>
+            <if test="pojo.user_name!=null">`user_name`,</if>
+            <if test="pojo.user_pass!=null">`user_pass`,</if>
+            <if test="pojo.user_image!=null">`user_image`,</if>
+            <if test="pojo.user_mail!=null">`user_mail`,</if>
+            <if test="pojo.user_phone!=null">`user_phone`,</if>
+            <if test="pojo.user_status!=null">`user_status`,</if>
+            <if test="pojo.user_token!=null">`user_token`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.user_id!=null">#{pojo.user_id},</if>
+            <if test="pojo.user_name!=null">#{pojo.user_name},</if>
+            <if test="pojo.user_pass!=null">#{pojo.user_pass},</if>
+            <if test="pojo.user_image!=null">#{pojo.user_image},</if>
+            <if test="pojo.user_mail!=null">#{pojo.user_mail},</if>
+            <if test="pojo.user_phone!=null">#{pojo.user_phone},</if>
+            <if test="pojo.user_status!=null">#{pojo.user_status},</if>
+            <if test="pojo.user_token!=null">#{pojo.user_token},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO users (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.user_id},
+            #{pojo.user_name},
+            #{pojo.user_pass},
+            #{pojo.user_image},
+            #{pojo.user_mail},
+            #{pojo.user_phone},
+            #{pojo.user_status},
+            #{pojo.user_token}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE users
+        <set>
+            <if test="pojo.user_id != null">`user_id` = #{pojo.user_id},</if>
+            <if test="pojo.user_name != null">`user_name` = #{pojo.user_name},</if>
+            <if test="pojo.user_pass != null">`user_pass` = #{pojo.user_pass},</if>
+            <if test="pojo.user_image != null">`user_image` = #{pojo.user_image},</if>
+            <if test="pojo.user_mail != null">`user_mail` = #{pojo.user_mail},</if>
+            <if test="pojo.user_phone != null">`user_phone` = #{pojo.user_phone},</if>
+            <if test="pojo.user_status != null">`user_status` = #{pojo.user_status},</if>
+            <if test="pojo.user_token != null">`user_token` = #{pojo.user_token}</if>
+        </set>
+        WHERE user_id = #{pojo.user_id}
+    </update>
+
+
+</mapper>
+
