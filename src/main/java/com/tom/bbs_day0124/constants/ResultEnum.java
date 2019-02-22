@@ -26,7 +26,7 @@ public enum ResultEnum {
     USER_IS_EXIST(40008, "用户名已存在"),
     USER_NOT_FOUND(40009, "用户名不存在"),
 
-    SELECT_SUCCESS(30010, "查询成功"),
+    SELECT_SUCCESS(0, "查询成功"),
     SELECT_FAILED(40010, "查询失败"),
     MAIL_SEND_SUCCESS(30011, "邮件发送成功"),
     MAIL_SEND_FAILED(40011, "邮件发送失败"),

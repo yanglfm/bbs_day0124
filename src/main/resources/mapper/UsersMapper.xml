@@ -31,11 +31,40 @@
 
 
     <select id="findAll" parameterType="map" resultType="Users">
-        select * from cake_day1225.users limit #{start},#{limit}
+        select * from cake_day1225.users
+        <where>
+            <trim>
+                <if test="title!=null">
+                    username like concat("%",#{title},"%")
+                    or phone like concat("%",#{title},"%")
+                    or mail like concat("%",#{title},"%")
+                </if>
+            </trim>
+            <trim prefix="or">
+                <if test="gender!=null">
+                    gender =#{gender}
+                </if>
+            </trim>
+        </where>
+        limit #{start},#{limit}
     </select>
 
     <select id="countAllUsers" resultType="java.lang.Long">
         select count(*) as countNum from cake_day1225.users
+        <where>
+            <trim>
+                <if test="title!=null">
+                    username like concat("%",#{title},"%")
+                    or phone like concat("%",#{title},"%")
+                    or mail like concat("%",#{title},"%")
+                </if>
+            </trim>
+            <trim prefix="or">
+                <if test="gender!=null">
+                    gender =#{gender}
+                </if>
+            </trim>
+        </where>
     </select>
 
 

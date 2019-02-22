@@ -31,14 +31,22 @@ public class UsersController {
     }
 
     @RequestMapping("/pageUsers")
-    public ResultEntity<List<Users>> pageUsers(@RequestParam Integer page, @RequestParam Integer limit) {
-        Map<String, Integer> map = new HashMap<>();
+    public ResultEntity<List<Users>> pageUsers(@RequestParam Integer page, @RequestParam Integer limit, String title) {
+        Map<String, Object> map = new HashMap<>();
         map.put("start", (page - 1) * limit);
         map.put("limit", limit);
+        if (title != null && !title.equals("")) {
+            map.put("title", title);
+            if (title.equals("男")) {
+                map.put("gender", 0);
+            } else if (title.equals("女")) {
+                map.put("gender", 1);
+            }
+        }
+
         ResultEntity<List<Users>> result = new ResultEntity<>();
         try {
-            result.setCode(0);
-            result.setMsg("查询成功");
+            result.setCodeAndMsg(ResultEnum.SELECT_SUCCESS);
             result.setCount(usersServiceImpl.usersCount());
             result.setData(usersServiceImpl.usersPage(map));
         } catch (Exception e) {
